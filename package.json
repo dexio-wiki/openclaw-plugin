@@ -1,0 +1,43 @@
+{
+  "name": "@dexio/openclaw-dexio",
+  "version": "0.1.0",
+  "description": "Your shared Dexio wiki as OpenClaw memory: recall before each turn, and tools to search, read and write it.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/dexio-wiki/openclaw-plugin#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dexio-wiki/openclaw-plugin.git"
+  },
+  "keywords": ["openclaw", "openclaw-plugin", "memory", "wiki", "dexio", "mcp"],
+  "files": ["dist", "assets", "openclaw.plugin.json", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test test/",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.9.8"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": { "optional": true }
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/node": "^24.0.0"
+  },
+  "openclaw": {
+    "extensions": ["./dist/index.js"],
+    "compat": {
+      "pluginApi": ">=2026.9.8",
+      "minGatewayVersion": "2026.9.8"
+    },
+    "build": {
+      "openclawVersion": "2026.9.8",
+      "pluginSdkVersion": "2026.9.8"
+    }
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

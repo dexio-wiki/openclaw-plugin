@@ -1,0 +1,64 @@
+{
+  "id": "dexio",
+  "name": "Dexio",
+  "description": "Your shared Dexio wiki as agent memory: recall before each turn, and tools to search, read and write the pages your other agents and team use.",
+  "categories": ["memory"],
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "tools": [
+      "dexio_search",
+      "dexio_read",
+      "dexio_list",
+      "dexio_write",
+      "dexio_edit",
+      "dexio_append"
+    ]
+  },
+  "uiHints": {
+    "apiKey": {
+      "label": "Dexio API key",
+      "sensitive": true,
+      "placeholder": "dxk_...",
+      "help": "Make one in Dexio under Settings > Agents (https://app.dexio.wiki/settings/agents). Or set DEXIO_API_KEY."
+    },
+    "url": {
+      "label": "Server",
+      "placeholder": "https://app.dexio.wiki",
+      "help": "Change it only for a self-hosted Dexio. Or set DEXIO_URL.",
+      "advanced": true
+    },
+    "autoRecall": {
+      "label": "Recall before each turn",
+      "help": "Search the wiki for the user's message and put the matching pages in front of the model. Needs hooks.allowConversationAccess."
+    },
+    "maxResults": {
+      "label": "Pages recalled per turn",
+      "placeholder": "4",
+      "advanced": true
+    },
+    "timeoutSeconds": {
+      "label": "Request timeout, seconds",
+      "placeholder": "6",
+      "advanced": true
+    },
+    "agentName": {
+      "label": "Name on changes",
+      "help": "The name Dexio records on this agent's changes. Defaults to the OpenClaw agent id, or openclaw for the main agent.",
+      "advanced": true
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "apiKey": { "type": "string" },
+      "url": { "type": "string" },
+      "autoRecall": { "type": "boolean" },
+      "maxResults": { "type": "integer", "minimum": 1, "maximum": 10 },
+      "timeoutSeconds": { "type": "number", "minimum": 1, "maximum": 14 },
+      "agentName": { "type": "string", "maxLength": 64 }
+    }
+  }
+}
