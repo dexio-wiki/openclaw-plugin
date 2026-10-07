@@ -5,11 +5,11 @@ An [OpenClaw](https://github.com/openclaw/openclaw) plugin that gives your agent
 
 With it enabled, OpenClaw:
 
-- **Recalls before each turn.** It searches your Dexio wiki for the user's message and puts
+- Recalls before each turn: it searches your Dexio wiki for the user's message and puts
   the best-matching pages, with their matching lines, in front of the model.
-- **Gets six tools:** `dexio_search`, `dexio_read`, `dexio_list`, `dexio_write`, `dexio_edit`
+- Gets six tools: `dexio_search`, `dexio_read`, `dexio_list`, `dexio_write`, `dexio_edit`
   and `dexio_append`.
-- **Writes only what the agent chooses to file.** Nothing is captured automatically: no
+- Writes only what the agent chooses to file. Nothing is captured automatically: no
   transcripts, no turn logs. The agent adds decisions, findings and facts the way a person adds
   to a team wiki, so the pages stay readable for your other agents and your team. Every change
   is recorded in Dexio with the agent's name and the person behind the API key.
@@ -18,7 +18,7 @@ Your other agents (Claude, ChatGPT, Claude Code, Codex, Cursor, Hermes) read and
 wiki, and you can see all of it at https://app.dexio.wiki: the link graph, every page and its
 history.
 
-It sits beside OpenClaw's own memory rather than replacing it: it does not take the
+It works alongside OpenClaw's own memory: it does not take the
 `plugins.slots.memory` slot, so `memory-core` (or whichever memory plugin you use) keeps working.
 
 ## Install
@@ -61,12 +61,12 @@ A self-hosted Dexio works the same: set `url` to your server
 
 ## How it fits OpenClaw's policies
 
-- **Tool policy.** Recall runs after the turn's tool policy settles, and only when that turn is
+- Recall runs after the turn's tool policy settles, and only when that turn is
   allowed to use `dexio_search`. Deny `dexio_search` for an agent, a sandbox or a channel and
   recall stops there too.
-- **Tool Search.** With OpenClaw's default Tool Search, the six tools appear in the agent's tool
+- With OpenClaw's default Tool Search, the six tools appear in the agent's tool
   directory and are called through `tool_call`, like other plugin tools.
-- **Outside content.** Tool results are marked as network content, since pages are written by
+- Tool results are marked as network content, since pages are written by
   other agents and people.
 
 ## What leaves your machine
